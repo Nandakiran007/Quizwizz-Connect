@@ -1,0 +1,170 @@
+.buttons {
+    color: black;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.headings {
+    display: flex;
+}
+
+h1 {
+    margin: 30px 0 1rem 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="email"],
+input[type="Username"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+.togg {
+    background-color: orange;
+    color: black;
+    padding: 10px 20px;
+    
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* .button-box {
+    width: 80%;
+} */
+.social-login {
+    margin-top: 20px;
+}
+
+.social-login a {
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.social-login a:hover {
+    color: #000;
+}
+
+.bgLogin {
+    display: flex;
+    background-color: #17c0eb;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
+}
+
+img {
+    width: 100vh;
+    height: 100vh;
+
+}
+
+.signupflex {
+    /* display: flex; */
+    /* height: 75%; */
+}
+
+nav {
+    display: flex;
+    margin-right: 1rem;
+    padding: 0;
+    justify-content: space-between;
+}
+
+/* 
+nav ul li{
+    list-style: none;
+    margin-right: 4rem;
+    background: linear-gradient(to right, #ff105f);
+    /* width: 2rem;  */
+/* height: 1rem; */
+/* } */
+.button-box {
+    width: 220px;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+    background-color: whitesmoke;
+}
+
+.toggle-btn {
+    width: 110px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    border-radius: 30px;
+}
+
+.toggle-btn1 {
+    width: 110px;
+    padding: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    border-radius: 30px;
+}
+
+#btn {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    /* background:linear-gradient(to right,#ff105f,#ffad06); */
+    border-radius: 30px;
+    transition: .5s;
+}
+
+/* .toggle-btn:hover{
+    background:linear-gradient(to right,#ff105f,#ffad06);
+}
+.toggle-btn1:hover{
+    background:linear-gradient(to right,#ff105f,#ffad06);
+}  */
+.hovereffect:hover {
+    background: linear-gradient(to right, #ff105f, #ffad06);
+
+}
+
+.form {
+    width: 100%;
+}
+
+.form-flex {
+    height: 100%;
+    margin: 5rem 0 0 14rem;
+    padding: 3rem;
+    justify-content: center;
+    align-items: center;
+    position: center;
+
+}
+
+h1 {
+    color: #fff;
+    font-weight: bold;
+}

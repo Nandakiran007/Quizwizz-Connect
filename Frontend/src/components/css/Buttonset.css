@@ -1,0 +1,64 @@
+    .outer-div-buttons {
+        height: 40%;
+        /* background-color: white; */
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* background-color: white; */
+        /* height:40%; */
+        width: 40%;
+    }
+
+    .Home_button {
+        /* height:60%; */
+        background-color: rgb(10, 46, 61) !important;
+        width: 180px;
+        height: 100%;
+        border-radius: 5%;
+    }
+
+    .input-div {
+        display: flex;
+        width: 300px;
+        height: 50px;
+        flex-direction: row;
+        border: 2px solid rgb(10, 46, 61);
+        border-radius: 5%;
+    }
+
+   
+
+    .item2 {
+
+        border-radius: 5%;
+    }
+
+    .white_p {
+        color: aliceblue
+    }
+
+    input[type=text] {
+        border: 1px solid lightblue;
+        height: 46px;
+        border: none;
+        /* width:40%; */
+    }
+
+    input[type=text]:focus {
+        outline: none;
+    }
+
+
+
+    #warning-text {
+        color: red;
+        font-weight: 600;
+        font-size: large;
+
+    }

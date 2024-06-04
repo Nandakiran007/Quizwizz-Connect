@@ -1,0 +1,88 @@
+.all-cards {
+    height: 400px;
+    justify-content: space-around;
+
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    
+
+}
+.participated-card{
+    margin-right: 30px;
+    margin-bottom: 20px;
+    height: 205px;
+    width: 275px;
+    background-color: #cfdbdb;
+    box-shadow: 4px 4px 4px #aaa;
+}
+
+.card {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    height: 325px;
+    width: 300px;
+    background-color: #cfdbdb;
+    box-shadow: 4px 4px 4px #aaa;
+    /* border:2px dashed black; */
+}
+
+.card:hover {
+    /* box-shadow:10px 10px 10px #aaa; */
+    transition: linear 0.5s;
+}
+
+.name-tag {
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+.quiz-name-tag{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.card button {
+    /* margin: 2px; */
+}
+
+
+
+p {
+    margin-left: 8px;
+}
+.create-btn{
+    background-color: #cfdbdb;
+    padding:10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.button_types {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+}
+
+.class_b {
+    margin: 2px 0 2px 8px;
+    border-radius: 40px;
+    width: 280px;
+    background-color: orange;
+    color: black;
+    padding: 10px 20px;
+    cursor: pointer;
+
+}
+
+.for_margin {
+    margin-top: 20px;
+    border-radius: 40px;
+
+
+}

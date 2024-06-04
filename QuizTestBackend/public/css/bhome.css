@@ -1,0 +1,38 @@
+*{
+    margin:0;
+    box-sizing: border-box; 
+}
+body{
+    /* background-image : url('/img/abstract-5719221_1280.jpg'); */
+}
+.profile-pic{
+    height: 100%;
+    width: 40px;
+    border-radius: 50%;
+}
+.nav-bar{
+    background-color: transparent  !important ;
+}
+.nav-link:hover{
+    border-bottom: 1px;
+}
+.section1{
+    margin-top: 15%;
+    /* background-color: blanchedalmond; */
+    justify-content: space-around;
+    margin-bottom: 15%;
+}
+
+.createbtn{
+
+}
+.joinbtn{
+
+}
+.card{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+card img {
+    height:100px !important;
+}

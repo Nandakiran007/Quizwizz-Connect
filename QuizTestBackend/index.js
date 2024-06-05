@@ -17,7 +17,7 @@ const errorMiddleware=require("./middlewares/errorMware")
 require('dotenv').config();
 
 const PORT =process.env.PORT
-// const MONGODBURL="mongodb+srv://nandakirankante:nandakiran@cluster0.yq655gh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/quizwizz"
+
 const MONGODB_URL = process.env.MONGODB_URL;
 console.log(MONGODB_URL)
 

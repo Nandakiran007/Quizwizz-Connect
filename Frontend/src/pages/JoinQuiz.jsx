@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../constants";
 
+
 const JoinQuiz = () => {
     const { quizid } = useParams();
 
@@ -40,7 +41,7 @@ const JoinQuiz = () => {
 
             try {
                 let response = await axios.post(
-                    `http://localhost:3000/exam/${quizid}`,
+                    `${BASE_URL}/exam/${quizid}`,
                     {
                         userid: user.userid,
                     }

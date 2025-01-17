@@ -7,14 +7,14 @@ const CreatedQuizCard = ({ Quiz, setState, deleteQuiz }) => {
     const { user } = useAuth();
     const [quiz, setQuiz] = useState(Quiz);
     const navigate = useNavigate();
-
+    const [refresh,setRefresh]=useState(false);
     const startQuiz = async (quizid) => {
         try {
             let response = await axios.patch(
                 `${BASE_URL}/quiz/start/${quizid}`
             );
             alert(response.data.message);
-            setState(!state);
+            setRefresh(!refresh);
         } catch (err) {
             console.log(err.response.data.message);
         }
@@ -23,7 +23,7 @@ const CreatedQuizCard = ({ Quiz, setState, deleteQuiz }) => {
         try {
             let response = await axios.patch(`${BASE_URL}/quiz/end/${quizid}`);
             alert(response.data.message);
-            setState(!state);
+            setRefresh(!refresh);
         } catch (err) {
             console.log(err.response.data.message);
         }

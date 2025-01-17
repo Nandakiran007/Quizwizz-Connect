@@ -219,7 +219,10 @@ const CreateQuizPage = () => {
                                                         )
                                                     }
                                                 >
-                                                    Remove Option
+                                                    <i
+                                                        class="fa fa-lg fa-trash"
+                                                        aria-hidden="true"
+                                                    ></i>
                                                 </button>
                                             </div>
                                         </div>

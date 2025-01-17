@@ -2,9 +2,6 @@ const User = require("../models/user");
 const { createToken } = require("../services/jwtToken");
 async function handleSignUp(req, res, next) {
   const { name, userid, email, password } = req.body;
-  //TODO: put constraints on userid
-  //check  email if already exits
-
   try {
     const userExist = await User.findOne({ email: email });
     if (userExist) {
@@ -44,7 +41,6 @@ async function handleSignUp(req, res, next) {
     };
 
     const token = createToken(payload);
-    res.cookie("backend", token);
     return res.status(201).json({
       message: `registered successfully for ${name}`,
       token: token,

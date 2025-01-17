@@ -8,7 +8,7 @@
 
     height: 4rem;
     display: flex;
-    background: linear-gradient(to right,#22c0f5, #1cb3e6);
+    background-color: #ccc;
     justify-content: space-between;
     align-items: center;
     position: relative;

@@ -134,7 +134,7 @@
 }
 
 .question-container button.remove {
-    background-color: #ff6347;
+    background-color: orange;
     /* Adjust color as needed */
     /* margin-left: 10px; */
 }

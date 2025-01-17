@@ -68,7 +68,7 @@ async function createQuiz(req,res,next){
     try{
     if(nameExist){
     const err=new Error();
-    err.message="quiz name taken";
+    err.message="Quiz name taken try giving some other name...";
     err.status=400;
     throw err;
     }}catch(err){

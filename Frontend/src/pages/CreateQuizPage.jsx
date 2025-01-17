@@ -12,6 +12,7 @@ const CreateQuizPage = () => {
     const [questions, setQuestions] = useState([]);
     const [multipleresponse, setMulitpleresonse] = useState(false);
     // const [showQuestionForm, setShowQuestionForm] = useState(true);
+    const [ErrorMsg,setErrorMsg]=useState("");
     const [currentQuestion, setCurrentQuestion] = useState({
         question: "",
         qtype: "MCQ",
@@ -59,7 +60,7 @@ const CreateQuizPage = () => {
         setQuestions([...questions, currentQuestion]);
         setCurrentQuestion({
             question: "",
-            type: "MCQ",
+            qtype: "MCQ",
             options: [],
             answer: "",
             marks: 1,
@@ -74,9 +75,20 @@ const CreateQuizPage = () => {
     };
 
     const handleSaveQuiz = async () => {
-        // Here you can save the quiz data to your backend or wherever you need
+        
         console.log(user);
 
+        if (!quizName) {
+            {
+                setErrorMsg("Please give a name to the quiz");
+                return;
+            }
+        }
+        if(questions.length===0){
+            setErrorMsg("Please add aleast one question");
+            return;
+        }
+        
         const quizData = {
             name: quizName,
             description: quizDescription,
@@ -92,6 +104,7 @@ const CreateQuizPage = () => {
         } catch (err) {
             console.log("in error");
             console.log(err);
+            setErrorMsg(err.response.data.message);
         }
     };
     //TODO: Add validation
@@ -125,9 +138,9 @@ const CreateQuizPage = () => {
                     {questions.map((q, index) => (
                         <div className="question-container" key={index}>
                             <h3>Question {index + 1}</h3>
-                            <p>Type: {q.type}</p>
+                            <p>Type: {q.qtype}</p>
                             <p>Question: {q.question}</p>
-                            {q.type === "MCQ" && (
+                            {q.qtype === "MCQ" && (
                                 <>
                                     {/* <p>Options:</p> */}
                                     <ul>
@@ -155,7 +168,7 @@ const CreateQuizPage = () => {
                             <span>Question Type:</span>
                             <select
                                 name="type"
-                                value={currentQuestion.type}
+                                value={currentQuestion.qtype}
                                 onChange={handleQuestionChange}
                             >
                                 <option value="MCQ">Multiple Choice</option>
@@ -174,7 +187,7 @@ const CreateQuizPage = () => {
                             />
                         </label>
                         <br />
-                        {currentQuestion.type === "MCQ" && (
+                        {currentQuestion.qtype === "MCQ" && (
                             <>
                                 {currentQuestion.options.map(
                                     (option, index) => (
@@ -247,9 +260,11 @@ const CreateQuizPage = () => {
                         </button>
                     </div>
                     <hr></hr>
+                    <p>Total No of Questions:{questions.length}</p>
                     <button class="save-button" onClick={handleSaveQuiz}>
                         Save Quiz
                     </button>
+                    <p id="warning-text">{ErrorMsg}</p>
                 </div>
                 {/* <br />
     <br />

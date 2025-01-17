@@ -10,7 +10,7 @@ const errorMiddleware = require("./middlewares/errorMware");
 
 require("dotenv").config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT||3000;
 
 const MONGODB_URL = process.env.MONGODB_URL;
 console.log(MONGODB_URL);

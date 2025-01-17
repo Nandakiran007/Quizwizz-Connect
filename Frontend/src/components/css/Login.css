@@ -33,7 +33,6 @@ input[type="text"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
 }
 
 
@@ -139,15 +138,12 @@ nav ul li{
     transition: .5s;
 }
 
-/* .toggle-btn:hover{
-    background:linear-gradient(to right,#ff105f,#ffad06);
+.btnPadding{
+    padding: 4px 8px ;
 }
-.toggle-btn1:hover{
-    background:linear-gradient(to right,#ff105f,#ffad06);
-}  */
-.hovereffect:hover {
-    background: linear-gradient(to right, #ff105f, #ffad06);
 
+.specialBg{
+    background: linear-gradient(to right, #ff105f, #ffad06);
 }
 
 .form {

@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css"; 
 import { NavLink } from "react-router-dom";
 import "./css/Navbar.css";
 import { useAuth } from "../contexts/auth";
@@ -12,7 +12,6 @@ const Navbar = () => {
 
     return (
         <>
-            {/* <header> */}
             <div className="nav-container">
                 <div className="logo">QuizWizz</div>
                 <nav>
@@ -37,8 +36,6 @@ const Navbar = () => {
                     </ul>
                 </nav>
             </div>
-
-            {/* </header> */}
         </>
     );
 };

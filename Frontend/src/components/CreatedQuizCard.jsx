@@ -1,17 +1,17 @@
-import axios from 'axios';
-import React,{useState}from 'react'
-import { useAuth } from '../contexts/auth';
-import { useNavigate } from 'react-router-dom';
-
+import axios from "axios";
+import React, { useState } from "react";
+import { useAuth } from "../contexts/auth";
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../constants";
 const CreatedQuizCard = ({ Quiz, setState, deleteQuiz }) => {
     const { user } = useAuth();
     const [quiz, setQuiz] = useState(Quiz);
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     const startQuiz = async (quizid) => {
         try {
             let response = await axios.patch(
-                `http://127.0.0.1:3000/quiz/start/${quizid}`
+                `${BASE_URL}/quiz/start/${quizid}`
             );
             alert(response.data.message);
             setState(!state);
@@ -21,19 +21,16 @@ const CreatedQuizCard = ({ Quiz, setState, deleteQuiz }) => {
     };
     const endQuiz = async (quizid) => {
         try {
-            let response = await axios.patch(
-                `http://127.0.0.1:3000/quiz/end/${quizid}`
-            );
+            let response = await axios.patch(`${BASE_URL}/quiz/end/${quizid}`);
             alert(response.data.message);
             setState(!state);
         } catch (err) {
             console.log(err.response.data.message);
         }
     };
-    const viewResults=async(quizid)=>{
-        navigate(`/results/${quizid}`)
-    }
-    
+    const viewResults = async (quizid) => {
+        navigate(`/results/${quizid}`);
+    };
 
     return (
         <>
@@ -41,7 +38,8 @@ const CreatedQuizCard = ({ Quiz, setState, deleteQuiz }) => {
                 <br />
                 <h4 className="quiz-name-tag">{Quiz.name}</h4>
                 <p>
-                    <b>Quiz ID: </b>{Quiz.quizid}
+                    <b>Quiz ID: </b>
+                    {Quiz.quizid}
                 </p>
                 <p>
                     <b>No of Participants:</b>
@@ -54,10 +52,16 @@ const CreatedQuizCard = ({ Quiz, setState, deleteQuiz }) => {
 
                 {Quiz.isEnded ? (
                     <>
-                        <button className='class_b' onClick={() => viewResults(Quiz.quizid)}>
+                        <button
+                            className="class_b"
+                            onClick={() => viewResults(Quiz.quizid)}
+                        >
                             View Results{" "}
                         </button>
-                        <button className='class_b' onClick={() => startQuiz(Quiz.quizid)}>
+                        <button
+                            className="class_b"
+                            onClick={() => startQuiz(Quiz.quizid)}
+                        >
                             {" "}
                             Continue Responses
                         </button>
@@ -77,7 +81,10 @@ const CreatedQuizCard = ({ Quiz, setState, deleteQuiz }) => {
                         Stop Quiz
                     </button>
                 )}
-                <button className='class_b' onClick={() => deleteQuiz(Quiz.quizid)}>
+                <button
+                    className="class_b"
+                    onClick={() => deleteQuiz(Quiz.quizid)}
+                >
                     Delete Quiz
                 </button>
             </div>
@@ -85,4 +92,4 @@ const CreatedQuizCard = ({ Quiz, setState, deleteQuiz }) => {
     );
 };
 
-export default CreatedQuizCard
+export default CreatedQuizCard;

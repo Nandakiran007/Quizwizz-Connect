@@ -5,15 +5,6 @@ const BasicInfo = () => {
     const { userDetails } = useAuth();
     return (
         <>
-            {/* <div className="profile_2">
-        <p>Manoj Kumar Mylapalli | AP21110011472</p>
-        <div className="hr-container">
-        </div>
-        <div className="user_details">
-            <p className="user_name"><b>Username : </b>{user.name}</p>
-            <p className="user_id"><b>Password : </b>{user.userid}</p>
-        </div>
-      </div> */}
             <div className="profile_2">
                 <div className="user_name">
                     <p>{userDetails.name}</p>
@@ -32,10 +23,7 @@ const BasicInfo = () => {
                 </div>
 
                 <div className="row1">
-                    <div className="details">
-                        {/* <p>Institution</p>
-                <a href="#"><b>SRM UNIVERSITY AP</b></a> */}
-                    </div>
+                    <div className="details"></div>
                     <div className="rows_flex">
                         <div className="row2">
                             <p>Quizzes participated</p>
@@ -48,8 +36,6 @@ const BasicInfo = () => {
                     </div>
                 </div>
             </div>
-            {/* <p>No of Quizzes Particpated:4</p> */}
-            {/* <p>No of Quizzes Joined:4</p> */}
         </>
     );
 };

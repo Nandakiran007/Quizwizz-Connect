@@ -37,5 +37,5 @@ app.use("/exam", examRouter);
 app.use(errorMiddleware);
 
 app.listen(PORT, () => {
-    console.log(`listening on http:/127.0.0.1:${PORT}`);
+    console.log(`server started on port:${PORT}`);
 });

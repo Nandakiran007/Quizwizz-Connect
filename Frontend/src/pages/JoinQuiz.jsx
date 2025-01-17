@@ -1,15 +1,16 @@
-import React, { useState,useEffect } from 'react'
-import { useSearchParams,useParams } from "react-router-dom";
-import { useAuth } from '../contexts/auth';
-import axios from 'axios';
-import './css/JoinQuiz.css'
-import OptionsList from '../components/OptionList';
-import Navbar from '../components/Navbar';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useSearchParams, useParams } from "react-router-dom";
+import { useAuth } from "../contexts/auth";
+import axios from "axios";
+import "./css/JoinQuiz.css";
+import OptionsList from "../components/OptionList";
+import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../constants";
 
 const JoinQuiz = () => {
     const { quizid } = useParams();
-    
+
     console.log("quizid in join quiz", quizid);
     const [oneStateVar, setOneStateVar] = useState({
         quizData: {},
@@ -59,8 +60,8 @@ const JoinQuiz = () => {
                 setOneStateVar({
                     ...oneStateVar,
                     errorText: err.response.data.message,
-                    isLoading:false,
-                    isErr:true
+                    isLoading: false,
+                    isErr: true,
                 });
                 // setisError(true);
                 // setErrorText(err.response.data.message);
@@ -72,28 +73,25 @@ const JoinQuiz = () => {
     // const { state: { QuizData } } = useLocation();
 
     //
-    const handleQuizSubmit =async () => {
+    const handleQuizSubmit = async () => {
         console.log("quiz submitted");
         console.log(attempted_list);
-        try{
-          const response=await axios.post(`http://127.0.0.1:3000/exam/submitExam/${quizid}`,{
-            userid:user.userid,
-            username:user.name,
-            attempted_list: attempted_list
-          })
-          console.log(response.data)
-          navigate("/profile/joined-quizzes");
-          
-        }catch(err){
-          console.log(err.response);
-          alert("error while submitting")
-          
-
+        try {
+            const response = await axios.post(
+                `${BASE_URL}/exam/submitExam/${quizid}`,
+                {
+                    userid: user.userid,
+                    username: user.name,
+                    attempted_list: attempted_list,
+                }
+            );
+            console.log(response.data);
+            navigate("/profile/joined-quizzes");
+        } catch (err) {
+            console.log(err.response);
+            alert("error while submitting");
         }
-
     };
-
-    
 
     return (
         <>
@@ -150,6 +148,6 @@ const JoinQuiz = () => {
             {/* <p>{quiz.name}</p> */}
         </>
     );
-}
+};
 
-export default JoinQuiz
+export default JoinQuiz;

@@ -1,18 +1,15 @@
-const jwt=require("jsonwebtoken")
-const SECRET="wakand@forever"
-function createToken(payload){
-    return jwt.sign(payload,SECRET);
-}
-function getTokenDetails(token){
-    if(!token) return null;
-    try{
-     return jwt.verify(token,SECRET)
-    }catch(err){
-        return null;
-    }
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+const secret = process.env.JWT_SECRET;
 
+function createToken(payload) {
+  return jwt.sign(payload, secret, { expiresIn: "1h" });
 }
-module.exports={
-    createToken,
-    getTokenDetails
+function verifyToken(token) {
+  const decoded = jwt.verify(token, secret);
+  return decoded;
 }
+module.exports = {
+  createToken,
+  verifyToken,
+};

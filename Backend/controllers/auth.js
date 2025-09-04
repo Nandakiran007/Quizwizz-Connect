@@ -63,65 +63,59 @@ async function handleSignUp(req, res, next) {
 async function handleLogin(req, res, next) {
   const { email, password } = req.body;
 
-  //check  email if already exits
-
-  const user = await User.findOne({ email, password });
-  // console.log(payload)
   try {
+    const user = await User.findOne({ email, password });
+
     if (!user) {
       const error = new Error();
       error.status = 400;
       error.message = "Invalid Credentials";
       throw error;
     }
+
+    console.log("login->", user.name);
+    const payload = {
+      name: user.name,
+      userid: user.userid,
+      email: user.email,
+    };
+    const token = createToken(payload);
+    return res.status(200).json({
+      message: "Logged In Successfully",
+      token: token,
+      name: user.name,
+    });
   } catch (error) {
     return next(error);
   }
-  console.log(user.name);
-  const payload = {
-      name: user.name,
-      userid: user.userid,
-      email: user.email,
-      participated_quizzes: user.participated_quizzes,
-      created_quizzes: user.created_quizzes,
-  };
-
-  const token = createToken(payload);
-  res.cookie("backend", token);
-  return res.status(200).json({
-    message: "Logged In Successfully",
-    token: token,
-    user: payload,
-  });
 }
 
-async function getUser(req,res,next){
-  const userid=req.params.userid;
+async function getUser(req, res, next) {
+  const userid = req.params.userid;
+  console.log("in get user controller");
   let user;
-  try{
-    user = await User.findOne({ userid:userid });
-    if(!user){
+  try {
+    user = await User.findOne({ userid: userid });
+    if (!user) {
       const err = new Error("No such user");
-      err.status=404;
+      err.status = 404;
       throw err;
     }
-    console.log("in get user")
-
-  }catch(err){
+    console.log("in get user");
+  } catch (err) {
     return next(err);
   }
   return res.status(200).json({
-      userid: user.userid,
-      name: user.name,
-      email: user.email,
-      created_quizzes: user.created_quizzes,
-      participated_quizzes: user.participated_quizzes,
+    userid: user.userid,
+    name: user.name,
+    email: user.email,
+    created_quizzes: user.created_quizzes,
+    participated_quizzes: user.participated_quizzes,
   });
-
 }
 
 module.exports = {
-    handleSignUp,
-    handleLogin,
-    getUser,
+  handleSignUp,
+  handleLogin,
+  getUser,
 };

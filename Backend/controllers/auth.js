@@ -73,7 +73,7 @@ async function handleLogin(req, res, next) {
       throw error;
     }
 
-    console.log("login->", user.name);
+    console.log("logged in:", user.name);
     const payload = {
       name: user.name,
       userid: user.userid,

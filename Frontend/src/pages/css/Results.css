@@ -1,27 +1,24 @@
 .table {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
-
-    /* border: 1px solid black; */
+    background-color: var(--surface);
 }
 
 td {
     justify-content: center;
-    /* border: 1px solid black */
 }
 
 .result-root {
     padding: 30px;
     height: 85vh;
     overflow: hidden;
+    background-color: var(--bg);
 }
 
 .result-div {
-    /* margin: 40px; */
     border-radius: 30px;
     padding: 10px;
-    background-color: #f0f7ff;
+    background-color: var(--secondary, var(--color-secondary));
     height: 100%;
     overflow-y: auto;
 }
@@ -32,13 +29,17 @@ td {
     align-items: center;
     width: 100%;
     height: 100px;
-    font-size: 45px;
-    color: #0366d6;
-
+    font-size: var(--h1);
+    color: var(--color-primary);
+    font-weight: 700;
+    font-family: var(--font-sans);
 }
 
 .result-data {
     padding: 10px;
+    color: var(--text);
+    font-family: var(--font-sans);
+    line-height: var(--line-height);
 }
 
 .about-quiz {
@@ -48,20 +49,26 @@ td {
     width: 30%;
     height: 100px;
     margin: 10px 0px 20px 0px;
-    border-radius: 20px;
-    background-color: white;
-    padding: 15px 5px 15px 5px;
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    padding: 15px 5px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.05);
+    font-family: var(--font-sans);
+    color: var(--text);
 }
 
 .about-quiz p {
     margin: 0 10px 20px 10px;
+    font-size: var(--base);
+    color: var(--muted);
 }
 
 .results-table {
     width: 80%;
     overflow-y: auto;
-    border-radius: 10px;
-    border: 3px solid #bddcff;
+    border-radius: var(--radius);
+    border: 2px solid var(--border);
+    font-family: var(--font-sans);
 }
 
 .table-head {
@@ -69,22 +76,25 @@ td {
 }
 
 .table-body td {
-
     height: 40px;
-    border: 1px solid black;
+    border: 1px solid var(--border);
     padding: 0.5rem;
+    color: var(--text);
+    font-size: var(--base);
 }
 
 .table-head th,
 .table-body td {
     padding: 10px;
-    /* background-color: white; */
-    border: 1px solid black;
+    border: 1px solid var(--border);
     text-align: left;
 }
 
 .table-head th {
-    background-color: #cce5ff;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--h3);
 }
 
 .table-head tr:first-child th {
@@ -101,7 +111,6 @@ td {
 
 .table tr:last-child td {
     border-bottom: none;
-    /* Remove bottom border of last row */
 }
 
 .table tr td:first-child {
@@ -110,9 +119,8 @@ td {
 
 .table tr td:last-child {
     border-right: none;
-    /* Remove right border of last cell in each row */
 }
 
 .table-body tr:hover {
-    background-color: #e6f2ff;
+    background-color: var(--bg);
 }

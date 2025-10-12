@@ -7,7 +7,7 @@ import { IoIosLogOut } from "react-icons/io";
 
 import "./css/Profile.css";
 const Profile = () => {
-  const { setUserDetails, getUserData } = useContext(AuthContext);
+  const { updateUserData, user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const getUserDetails = async (userid) => {
@@ -15,7 +15,7 @@ const Profile = () => {
         console.log("in getuserdetails");
         console.log(`userid:${userid}`);
         const response = await axiosInstance.get(`/auth/${userid}`);
-        console.log("fetched");
+        console.log("fetched",response.data);
         const details = response.data;
         const userinfo = {
           name: details.name,
@@ -24,16 +24,14 @@ const Profile = () => {
           created_quizzes: details.created_quizzes,
           participated_quizzes: details.participated_quizzes,
         };
-        setUserDetails(() => {
-          return userinfo;
-        });
+        updateUserData(userinfo);
         setIsLoading(false);
         // console.log(userinfo.participated_quizzes);
       } catch (err) {
         console.log(err);
       }
     };
-    const user = getUserData();
+    console.log("in profile useeffect",user);
     getUserDetails(user.userid);
   }, []);
 

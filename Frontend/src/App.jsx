@@ -13,11 +13,14 @@ import Results from "./pages/Results";
 import { RequiresAuth } from "./contexts/RequiresAuth";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./contexts/Auth";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <ToastContainer position="top-right" autoClose={3000} />
+
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />

@@ -2,18 +2,17 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../contexts/Auth";
 
 const QuizzesJoined = () => {
-  const { userDetails } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [joined_quizzes, setJoined_quizzes] = useState([]);
   useEffect(() => {
-    if (userDetails) {
-      setJoined_quizzes(userDetails.participated_quizzes || []);
+    if (user) {
+      setJoined_quizzes(user.participated_quizzes || []);
     }
-  }, [userDetails]);
+  }, [user]);
   console.log("in joined");
-  console.log(userDetails);
-  const list = userDetails.participated_quizzes;
+  console.log(user);
+  const list = user.participated_quizzes;
   console.log(list);
-  //   setJoined_quizzes(list);
   console.log(joined_quizzes);
   let notEmpty = list.length !== 0;
 

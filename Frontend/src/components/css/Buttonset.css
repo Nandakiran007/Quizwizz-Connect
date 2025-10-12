@@ -1,62 +1,82 @@
 .outer-div-buttons {
-    height: 40%;
-    /* background-color: white; */
-}
-
-.buttons {
+    height: 100%;
     display: flex;
     justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* background-color: white; */
-    /* height:40%; */
-    width: 40%;
+    align-items: center;
+}
+
+.home-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+    gap: 48px;
 }
 
 .Home_button {
-    /* height:60%; */
-    background-color: rgb(10, 46, 61) !important;
+    background-color: var(--color-primary) !important; /* Teal button */
     width: 180px;
-    height: 100%;
-    
+    color: var(--surface); /* White text inside button */
+    font-weight: 600;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Home_button:hover {
+    background-color: var(--color-accent); /* Coral hover */
 }
 
 .input-div {
     display: flex;
-    width: 300px;
-    height: 50px;
-    flex-direction: row;
-    border: 2px solid rgb(10, 46, 61);
+    border: 2px solid var(--color-primary);   
+    background-color: var(--surface);
+    border-radius: var(--radius) 0 0 var(--radius);
+    width: 175px;
+}
+
+.cta-color {
+    color: var(--surface); /* White text */
+}
+
+.input-div input[type="text"] {
+    font-size: var(--base);
+    color: var(--text); /* Main text color */
+    outline: none;
+    border:none;
     
 }
 
-.item2 {
-     
-}
-
-.white_p {
-    color: aliceblue;
-}
-
-input[type="text"] {
-    border: 1px solid lightblue;
-    height: 47px;
-    border: none;
-    /* width:40%; */
-}
-
-input[type="text"]:focus {
+.input-div input[type="text"]:focus {
     outline: none;
+    border:none;
 }
+
+
+
+
+
+
+
+.button-set-item{
+    /* background-color: green; */
+    height:64px; 
+}
+.joinBtn{
+    width: 100px;
+    border-radius: 0 var(--radius)  var(--radius) 0;
+}
+
+.navbarBg {
+    background-color: var(--color-secondary); /* Sand background */
+}
+
 
 #warning-text {
-    color: red;
-    font-weight: 600;
-    font-size: large;
-}
-
-.navbarBg{
-    background-color: #eef0e7;
+    color: var(--color-error); /* Coral warning text */
+    /* font-weight: 500; */
+    /* font-size: large; */
+    position: absolute;
+    margin-top:4px;
 }

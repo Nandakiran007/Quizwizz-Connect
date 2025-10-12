@@ -3,12 +3,10 @@ import Buttonset from "../components/Buttonset";
 import "./css/Home.css";
 function Home() {
   return (
-    <>
+    <div className="bgHome">
       <Navbar />
-      <div className="bgHome">
-        <Buttonset />
-      </div>
-    </>
+      <Buttonset />
+    </div>
   );
 }
 

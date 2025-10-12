@@ -1,22 +1,21 @@
 .all-cards {
     height: 400px;
     justify-content: space-around;
-
 }
 
 .cards {
     display: flex;
     flex-wrap: wrap;
-    
-
 }
-.participated-card{
+
+.participated-card {
     margin-right: 30px;
     margin-bottom: 20px;
     height: 205px;
     width: 275px;
-    background-color: #cfdbdb;
-    box-shadow: 4px 4px 4px #aaa;
+    background-color: var(--surface); /* white surface */
+    box-shadow: 4px 4px 6px var(--border); /* subtle border shadow */
+    border-radius: var(--radius);
 }
 
 .card {
@@ -24,65 +23,88 @@
     margin-bottom: 20px;
     height: 325px;
     width: 300px;
-    background-color: #cfdbdb;
-    box-shadow: 4px 4px 4px #aaa;
-    /* border:2px dashed black; */
+    background-color: var(--surface); /* white surface */
+    box-shadow: 4px 4px 6px var(--border);
+    border-radius: var(--radius);
+    transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-    /* box-shadow:10px 10px 10px #aaa; */
-    transition: linear 0.5s;
+    box-shadow: 6px 6px 12px rgba(0, 109, 119, 0.2); /* teal-tinted hover shadow */
 }
 
 .name-tag {
     margin-top: 30px;
     text-align: center;
     margin-bottom: 20px;
-
+    color: var(--text);
+    font-weight: 600;
 }
-.quiz-name-tag{
+
+.quiz-name-tag {
     margin-bottom: 30px;
     text-align: center;
+    color: var(--muted);
 }
+
 .card button {
-    /* margin: 2px; */
+    border: none;
+    border-radius: var(--radius);
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: var(--color-accent); /* coral button */
+    color: var(--surface); /* white text */
+    transition: background-color 0.3s ease;
 }
 
-
+.card button:hover {
+    background-color: var(--color-primary); /* teal hover */
+}
 
 p {
     margin-left: 8px;
+    color: var(--text);
 }
-.create-btn{
-    background-color: #cfdbdb;
-    padding:10px 20px;
-    border-radius: 10px;
+
+.create-btn {
+    background-color: var(--color-secondary); /* sand background */
+    padding: 10px 20px;
+    border-radius: var(--radius);
     border: none;
     cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.create-btn:hover {
+    background-color: var(--color-primary); /* teal hover */
+    color: var(--surface);
 }
 
 .button_types {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-
 }
 
 .class_b {
     margin: 2px 0 2px 8px;
     border-radius: 40px;
     width: 280px;
-    background-color: orange;
-    color: black;
+    background-color: var(--color-accent); /* coral */
+    color: var(--surface); /* white text */
     padding: 10px 20px;
     cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
 
+.class_b:hover {
+    background-color: var(--color-primary); /* teal hover */
 }
 
 .for_margin {
     margin-top: 20px;
     border-radius: 40px;
-
-
 }

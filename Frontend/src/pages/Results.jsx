@@ -1,6 +1,6 @@
 import axiosInstance from "../utils/axiosInstance";
-import { useEffect, useState, useNavigate } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams,useNavigate } from "react-router-dom";
 import "./css/Results.css";
 
 import Navbar from "../components/Navbar";

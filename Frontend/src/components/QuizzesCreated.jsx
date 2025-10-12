@@ -1,13 +1,14 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import "./css/QuizzesCreated.css";
+// import "./css/QuizzesCreated.css";
 import axiosInstance from "../utils/axiosInstance";
 import { AuthContext } from "../contexts/Auth";
 
 import CreatedQuizCard from "./CreatedQuizCard";
 const QuizzesCreated = () => {
-  const { getUserData } = useContext(AuthContext);
-  let userid = getUserData().userid;
+  const {
+    user: { userid },
+  } = useContext(AuthContext);
   const [quizzes, setQuizzes] = useState([]);
 
   useEffect(() => {
@@ -22,13 +23,13 @@ const QuizzesCreated = () => {
       }
     }
     getQuizzes();
-  }, []);
+  }, [userid]);
   const deleteQuiz = async (quizid) => {
     console.log(" in delte");
     console.log(quizid);
-    console.log(user.userid);
+    console.log(userid);
     const data = {
-      userid: user.userid,
+      userid: userid,
     };
     try {
       let response = await axiosInstance.post(`/quiz/delete/${quizid}`, data);

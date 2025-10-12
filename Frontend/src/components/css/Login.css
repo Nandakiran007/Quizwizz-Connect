@@ -1,12 +1,51 @@
-.buttons {
-    color: black;
+
+.root-container{
+    background-color: var(--bg); /* sand background */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-flex {
+    background-color: var(--color-tertiary); 
+    border-radius: var(--radius);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
 }
 
-body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
+.button-box {
+    width: 100%;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-secondary);
+    gap: 5px; 
+    
 }
+
+.toggle-btn {
+    /* flex: 1; */
+    color: var(--text); /* white text */
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: var(--color-secondary);
+    font-weight: 600;
+    width: 150px;
+    height: 48px;
+    border: 0;
+    outline: none;
+    position: relative;
+    font-weight: 500;
+     /* padding: 4px 8px; */
+    /* margin-left: 20px; */
+}
+
 
 
 .headings {
@@ -15,39 +54,33 @@ body {
 
 h1 {
     margin: 30px 0 1rem 0;
+    color: var(--color-primary); /* teal headings */
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    color: var(--text);
 }
 
 input[type="email"],
 input[type="Username"],
 input[type="password"],
 input[type="text"] {
-    width: 100%;
+    width: 300px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border); /* subtle border */
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    color: var(--text);
 }
 
 
-.togg {
-    background-color: orange;
-    color: black;
-    padding: 10px 20px;
-    
-    border-radius: 4px;
-    cursor: pointer;
-}
 
-/* .button-box {
-    width: 80%;
-} */
 .social-login {
     margin-top: 20px;
 }
@@ -56,111 +89,50 @@ input[type="text"] {
     display: block;
     margin-bottom: 5px;
     text-decoration: none;
-    color: #333;
+    color: var(--muted); /* muted gray for links */
+    transition: color 0.2s ease;
 }
 
 .social-login a:hover {
-    color: #000;
+    color: var(--color-primary); /* teal on hover */
 }
 
-.bgLogin {
-    display: flex;
-    background-color: #17c0eb;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: auto;
-}
 
-img {
-    width: 100vh;
-    height: 100vh;
 
-}
 
-.signupflex {
-    /* display: flex; */
-    /* height: 75%; */
-}
 
-nav {
-    display: flex;
-    margin-right: 1rem;
-    padding: 0;
-    justify-content: space-between;
-}
-
-/* 
-nav ul li{
-    list-style: none;
-    margin-right: 4rem;
-    background: linear-gradient(to right, #ff105f);
-    /* width: 2rem;  */
-/* height: 1rem; */
-/* } */
-.button-box {
-    width: 220px;
-    border-radius: 3px;
-    position: relative;
-    box-shadow: 0 0 20px 9px #ff61241f;
-    border-radius: 30px;
-    background-color: whitesmoke;
-}
-
-.toggle-btn {
-    width: 110px;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    outline: none;
-    position: relative;
-    border-radius: 30px;
-}
-
-.toggle-btn1 {
-    width: 110px;
-    padding: 10px;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    outline: none;
-    position: relative;
-    border-radius: 30px;
-}
-
-#btn {
+/* #btn {
     top: 0;
     left: 0;
     position: absolute;
     width: 110px;
     height: 100%;
-    /* background:linear-gradient(to right,#ff105f,#ffad06); */
+    background: var(--color-primary);
     border-radius: 30px;
     transition: .5s;
+} */
+
+.btnPadding {
+    padding: 4px 8px;
+    color: var(--surface); /* white text */
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    font-weight: 600;
+    width: 150px;
+    height: 48px;
+    border: 0;
+    outline: none;
+    position: relative;
+    font-weight: 500;
 }
 
-.btnPadding{
-    padding: 4px 8px ;
+.specialBg {
+    background: var(--color-primary);
+    color: var(--surface); 
 }
 
-.specialBg{
-    background: linear-gradient(to right, #ff105f, #ffad06);
-}
-
-.form {
-    width: 100%;
-}
-
-.form-flex {
-    height: 100%;
-    margin: 5rem 0 0 14rem;
-    padding: 3rem;
-    justify-content: center;
-    align-items: center;
-    position: center;
-
-}
 
 h1 {
-    color: #fff;
     font-weight: bold;
 }

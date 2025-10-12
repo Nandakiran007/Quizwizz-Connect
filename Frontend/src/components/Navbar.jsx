@@ -7,37 +7,35 @@ const Navbar = () => {
   const { isLoggedin } = useContext(AuthContext);
 
   return (
-    <>
-      <div className="nav-container">
-        <div className="logo">QuizWizz</div>
-        <nav>
-          <ul className="nav-links">
+    <div className="nav-container">
+      <div className="logo">QuizWizz</div>
+      <nav>
+        <ul className="nav-links">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile">Profile</NavLink>
+          </li>
+          {isLoggedin ? (
             <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile">Profile</NavLink>
-            </li>
-            {isLoggedin ? (
-              <li>
-                <NavLink
-                  to="/
+              <NavLink
+                to="/logout
                 "
-                >
-                  Logout
-                </NavLink>
+              >
+                Logout
+              </NavLink>
+            </li>
+          ) : (
+            <>
+              <li>
+                <NavLink to="/login">Login</NavLink>
               </li>
-            ) : (
-              <>
-                <li>
-                  <NavLink to="/login">Login</NavLink>
-                </li>
-              </>
-            )}
-          </ul>
-        </nav>
-      </div>
-    </>
+            </>
+          )}
+        </ul>
+      </nav>
+    </div>
   );
 };
 

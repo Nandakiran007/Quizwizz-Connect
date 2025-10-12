@@ -19,8 +19,7 @@ const JoinQuiz = () => {
     isLoading: true,
   });
   const [attempted_list, setAttemptedList] = useState({});
-  const { getUserData } = useContext(AuthContext);
-  const user = getUserData();
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   //let [,setIsLoading]=useState(true)

@@ -34,12 +34,12 @@ const LoginForm = () => {
     } catch (err) {
       console.log(err);
       console.log(err.response);
-      setWarnText(err.response.data.message);
+      setWarnText(err.response.message);
     }
   };
 
   return (
-    <div className="loginflex">
+    <div >
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -65,7 +65,7 @@ const LoginForm = () => {
           />
         </div>
         {warnText && <p style={{ color: "red" }}>{warnText}</p>}
-        <button className="btnPadding" type="submit">
+        <button className="btnPadding" >
           Login
         </button>
       </form>

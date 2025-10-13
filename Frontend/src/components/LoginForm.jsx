@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/Auth";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const { login } = useContext(AuthContext);
@@ -32,9 +33,8 @@ const LoginForm = () => {
 
       navigate("/");
     } catch (err) {
-      console.log(err);
-      console.log(err.response);
-      setWarnText(err.response.message);
+      toast.error(err.response.data.message);
+      setWarnText(err.response.data.message);
     }
   };
 
@@ -65,7 +65,7 @@ const LoginForm = () => {
           />
         </div>
         {warnText && <p style={{ color: "red" }}>{warnText}</p>}
-        <button className="btnPadding" >
+        <button className="btnPadding"type="submit" >
           Login
         </button>
       </form>

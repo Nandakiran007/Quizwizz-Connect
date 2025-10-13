@@ -6,6 +6,19 @@ import axiosInstance from "../utils/axiosInstance";
 import { IoIosLogOut } from "react-icons/io";
 
 import "./css/Profile.css";
+
+const SidebarOption = ({ to, label, icon }) => (
+  <NavLink to={to}>
+    <div className="sidebar_option">
+      <div className="navitem">
+        <p>
+          {label} {icon}
+        </p>
+      </div>
+    </div>
+  </NavLink>
+);
+
 const Profile = () => {
   const { updateUserData, user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +28,7 @@ const Profile = () => {
         console.log("in getuserdetails");
         console.log(`userid:${userid}`);
         const response = await axiosInstance.get(`/auth/${userid}`);
-        console.log("fetched",response.data);
+        console.log("fetched", response.data);
         const details = response.data;
         const userinfo = {
           name: details.name,
@@ -31,7 +44,7 @@ const Profile = () => {
         console.log(err);
       }
     };
-    console.log("in profile useeffect",user);
+    console.log("in profile useeffect", user);
     getUserDetails(user.userid);
   }, []);
 
@@ -43,40 +56,14 @@ const Profile = () => {
     </div> */}
         <div className="sidebar">
           <div className="sidebar_options">
-            <NavLink to="/profile">
-              <div className="sidebar_option1 sidebar_option">
-                {" "}
-                <div className="navitem">
-                  <p>Profile</p>
-                </div>
-              </div>
-            </NavLink>
-            <NavLink to="created-quizzes">
-              <div className="sidebar_option2 sidebar_option">
-                {" "}
-                <div className="navitem">
-                  <p>Quizzes Created</p>
-                </div>
-              </div>
-            </NavLink>
-            <NavLink to="joined-quizzes">
-              <div className="sidebar_option3 sidebar_option">
-                {" "}
-                <div className="navitem">
-                  <p>Quizzes Participated</p>
-                </div>
-              </div>
-            </NavLink>
-            <NavLink to="/logout">
-              <div className="sidebar_option4 sidebar_option">
-                {" "}
-                <div className="navitem">
-                  <p>
-                    Log Out <IoIosLogOut />
-                  </p>
-                </div>
-              </div>
-            </NavLink>
+            <SidebarOption to="/profile" label="Profile" />
+            <SidebarOption to="created-quizzes" label="Quizzes Created" />
+            <SidebarOption to="joined-quizzes" label="Quizzes Participated" />
+            <SidebarOption
+              to="/logout"
+              label="Log Out"
+              icon={<IoIosLogOut />}
+            />
           </div>
         </div>
 

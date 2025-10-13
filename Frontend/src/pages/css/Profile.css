@@ -1,112 +1,148 @@
+/* ===================== CONTAINERS ===================== */
 .main-box {
-    background-color: var(--color-secondary); /* light airy blue */
-    font-family: var(--font-sans);
-    min-height: 100vh;
-    width: 100vw;
-}
-
-.outlet-div {
-    background-color: var(--surface); /* white card/surface */
-    border-radius: var(--radius);
-    margin: 10px;
-    padding: 20px;
-    height: 650px;
-    width: 100%;
-    overflow: auto;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--bg);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  width: 100%;
+  padding: 12px;
+  gap: var(--gap);
 }
 
 .sidebar {
-    width: 260px;
-    height: 100%;
-    margin: 8px;
-    border-radius: var(--radius);
-    background-color: var(--surface); /* white sidebar background */
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-}
-
-p {
-    margin: 0;
-    padding: 0;
-    color: var(--text);
+  width: 260px;
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .sidebar_options a {
-    color: var(--text); /* main text */
-    text-decoration: none;
-    justify-content: center;
-    display: block;
-    padding: 12px 16px;
-    font-weight: 500;
-    border-radius: var(--radius);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.sidebar_option1,
-.sidebar_option2,
-.sidebar_option3,
-.sidebar_option4 {
-    color: var(--text);
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.sidebar_option1:hover,
-.sidebar_option2:hover,
-.sidebar_option3:hover,
-.sidebar_option4:hover {
-    background-color: var(--color-secondary); /* subtle hover */
-    color: var(--color-primary); /* indigo text on hover */
-    font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
 }
 
 .sidebar_option {
-    margin: 6px 16px 6px 2px;
-    width: 265px;
-    background-color: var(--surface); /* white */
-    padding: 35px 40px;
-    color: var(--text);
-    text-decoration: none;
-    border-radius: var(--radius);
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.05);
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  margin: 6px 12px;
+  border-radius: var(--radius);
+  background-color: var(--surface);
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .sidebar_option:hover {
-    box-shadow: 4px 4px 12px rgba(0, 61, 145, 0.3); /* indigo tinted shadow */
-    transform: translateY(-2px);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 61, 145, 0.2);
+  transform: translateY(-2px);
 }
 
-.profile_2 p {
-    height: auto;
-    color: var(--text);
+.navitem p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
 }
 
+/* ===================== OUTLET / CONTENT ===================== */
+.outlet-div {
+  flex-grow: 1;
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin: 8px 0;
+  min-height: 600px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* ===================== USER DETAILS CARD ===================== */
 .user_details {
-    margin: 30px;
-    padding: 10px;
-    width: 400px;
-    background-color: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.05);
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px;
+  width: 100%;
+  max-width: 450px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .user_details p {
-    margin-bottom: 20px;
-    color: var(--text);
+  color: var(--text);
+  font-size: 1rem;
+  line-height: var(--line-height);
 }
 
+/* ===================== FLEX ROWS ===================== */
 .rows_flex {
-    margin: 10px;
-    padding: 10px;
-    display: flex;
-    gap: var(--gap);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  margin: 12px 0;
 }
 
-.row2,
-.row3 {
-    margin-right: 20px;
+/* ===================== TYPOGRAPHY ===================== */
+p {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: var(--line-height);
+}
+
+/* ===================== LOGOUT ICON ===================== */
+.sidebar_option svg {
+  font-size: 1.2rem;
+}
+
+/* ===================== RESPONSIVENESS ===================== */
+@media screen and (max-width: 1024px) {
+  .main-box {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 12px 0;
+  }
+
+  .sidebar_option {
+    margin: 0 6px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .outlet-div {
+    margin: 12px 0;
+    padding: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .user_details {
+    padding: 16px;
+    width: 100%;
+  }
+
+  .rows_flex {
+    flex-direction: column;
+  }
 }

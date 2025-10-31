@@ -239,7 +239,7 @@ button {
   border-radius: var(--radius);
   padding: 20px;
   margin-bottom: var(--gap);
-  box-shadow: 0 4px 10px rgba(11, 33, 54, 0.05);
+  box-shadow: 0 4px 10px var(--border);
   font-family: var(--font-sans);
   color: var(--text);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -247,7 +247,7 @@ button {
 
 .question-card-container:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(11, 33, 54, 0.08);
+  box-shadow: 0 8px 20px var(--border);
 }
 
 .question-card-container h3 {

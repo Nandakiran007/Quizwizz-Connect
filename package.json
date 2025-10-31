@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "concurrently --raw -n backend,frontend -c green,blue \"npm start --prefix Backend\" \"npm run dev --prefix Frontend\""
+    "start": "concurrently --raw -n backend,frontend -c green,blue \"npm run  dev --prefix Backend\" \"npm run dev --prefix Frontend\""
   },
   "devDependencies": {
     "concurrently": "^9.2.1"

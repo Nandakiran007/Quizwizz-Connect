@@ -35,7 +35,7 @@ const Buttonset = () => {
     <div className="outer-div-buttons">
       <div className="home-buttons">
         <div>
-          <Link to="/create">
+          <Link to="/create" style={{textDecoration: 'none'}}>
             <button className="Home_button button-set-item">
               <p className="cta-color ">Create Quiz</p>
             </button>

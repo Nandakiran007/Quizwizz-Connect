@@ -1,50 +1,41 @@
-.all-cards {
-    height: 400px;
-    justify-content: space-around;
-}
 
 .cards {
     display: flex;
     flex-wrap: wrap;
+    gap:16px;
 }
 
 .participated-card {
-    margin-right: 30px;
-    margin-bottom: 20px;
-    height: 205px;
-    width: 275px;
+    width: 300px;
+    padding: 20px;
     background-color: var(--surface); /* white surface */
     box-shadow: 4px 4px 6px var(--border); /* subtle border shadow */
     border-radius: var(--radius);
+    gap: 8px;
 }
 
 .card {
-    margin-right: 20px;
-    margin-bottom: 20px;
-    height: 325px;
+    padding:20px;
     width: 300px;
-    background-color: var(--surface); /* white surface */
+    background-color: var(--color-secondary); /* white surface */
     box-shadow: 4px 4px 6px var(--border);
     border-radius: var(--radius);
     transition: box-shadow 0.3s ease;
+    gap:8px;
 }
 
 .card:hover {
-    box-shadow: 6px 6px 12px rgba(0, 109, 119, 0.2); /* teal-tinted hover shadow */
+    box-shadow: 6px 6px 12px var(--border); /* teal-tinted hover shadow */
 }
 
-.name-tag {
-    margin-top: 30px;
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--text);
-    font-weight: 600;
+.card  p{
+    margin-bottom: 4px;
 }
+
 
 .quiz-name-tag {
-    margin-bottom: 30px;
     text-align: center;
-    color: var(--muted);
+    color: var(--text);
 }
 
 .card button {
@@ -53,33 +44,34 @@
     padding: 8px 16px;
     cursor: pointer;
     font-weight: 600;
-    background-color: var(--color-accent); /* coral button */
+    background-color: var(--color-primary); /* coral button */
     color: var(--surface); /* white text */
     transition: background-color 0.3s ease;
 }
 
 .card button:hover {
-    background-color: var(--color-primary); /* teal hover */
+    opacity: 0.9;
 }
 
-p {
-    margin-left: 8px;
+.card p {
+    margin-left: 12px;
     color: var(--text);
 }
 
 .create-btn {
-    background-color: var(--color-secondary); /* sand background */
+    background-color: var(--color-primary); /* sand background */
     padding: 10px 20px;
     border-radius: var(--radius);
     border: none;
     cursor: pointer;
     font-weight: 500;
     transition: background-color 0.3s ease;
+    margin-top: 40px;
+    color: var(--surface);
 }
 
 .create-btn:hover {
-    background-color: var(--color-primary); /* teal hover */
-    color: var(--surface);
+    opacity: 0.95;
 }
 
 .button_types {
@@ -89,9 +81,9 @@ p {
 }
 
 .class_b {
-    margin: 2px 0 2px 8px;
+    /* margin: 2px 0 2px 8px; */
     border-radius: 40px;
-    width: 280px;
+    /* width: 280px; */
     background-color: var(--color-accent); /* coral */
     color: var(--surface); /* white text */
     padding: 10px 20px;

@@ -1,5 +1,5 @@
 // import {useState} from 'react';
-const OptionsList = ({ qindex, attempted_list, setfunc, options }) => {
+const   OptionsList = ({ qindex, attempted_list, setfunc, options }) => {
   // console.log(options);
   const opt = options;
   // let [options,setoption]=useState([]);

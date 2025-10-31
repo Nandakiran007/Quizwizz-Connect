@@ -43,9 +43,9 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="signupflex">
+    <div>
       <form onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
+        {/* <h1>Sign Up</h1> */}
 
         <div className="form-group">
           <label htmlFor="email">Email</label>

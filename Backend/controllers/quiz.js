@@ -1,12 +1,17 @@
 const Quiz = require("../models/quiz");
 const User = require("../models/user");
-const { generateQid } = require("../services/qidgenerator");
+const { generateQid } = require("../services/helper");
 
 async function getCreatedQuizzes(req, res, next) {
   let userid = req.params.userid;
   const quizzes = await Quiz.find({ createdBy: userid });
   console.log(quizzes);
   res.status(200).json({ quizzes: quizzes });
+}
+
+async function getQuizByid(quidId) {
+  const quiz = await Quiz.findOne({ quizid: quidId });
+  return quiz;
 }
 
 // async function viewQuiz(req,res,next){
@@ -25,7 +30,7 @@ async function startQuiz(req, res, next) {
   console.log("in start");
   let quizid = req.params.quizid;
   try {
-    const quiz = await Quiz.updateOne(
+    const updateStatus = await Quiz.updateOne(
       { quizid: quizid },
       {
         $set: {
@@ -34,13 +39,13 @@ async function startQuiz(req, res, next) {
         },
       }
     );
-    console.log(quiz);
-    if (!quiz) {
-      const err = new Error();
-      err.status = 404;
-      err.message = "No such quiz exists";
-      throw err;
+    if (!updateStatus) {
+        const err = new Error();
+        err.status = 404;
+        err.message = "No such quiz exists";
+        throw err;
     }
+    const quiz=await getQuizByid(quizid);
     return res.status(200).json({
       message: `opened  the quiz ${quizid} for responses`,
       quiz: quiz,
@@ -56,8 +61,8 @@ async function createQuiz(req, res, next) {
   var quizid = generateQid();
   const description = req.body.description || "";
   const questions_list = req.body.questions;
-  const createdBy = req.body.user.userid;
-  const creatorname = req.body.user.name;
+  const createdBy = req.user.userid;
+  const creatorname = req.user.name;
   const multiple_responses = req.body.multiple_responses || false;
   const nameExist = await Quiz.findOne({ name: name });
   try {
@@ -117,7 +122,6 @@ async function editQuiz(req, res) {
 }
 
 async function deleteQuiz(req, res, next) {
-  console.log("in delete");
   let quizid = req.params.quizid;
   const quiz = await Quiz.findOne({ quizid: quizid });
   console.log(req.body);
@@ -128,7 +132,7 @@ async function deleteQuiz(req, res, next) {
       err.message = "No such quiz exists";
       throw err;
     }
-    if (req.body.userid === quiz.createdBy) {
+    if (req.user.userid === quiz.createdBy) {
       await Quiz.deleteOne({ quizid: quizid });
       return res.status(200).json({ message: "deleted quiz successfully" });
     } else {
@@ -157,7 +161,7 @@ async function endQuiz(req, res) {
   console.log("in end");
   let quizid = req.params.quizid;
   try {
-    const quiz = await Quiz.updateOne(
+    const updateStatus = await Quiz.updateOne(
       { quizid: quizid },
       {
         $set: {
@@ -166,13 +170,13 @@ async function endQuiz(req, res) {
         },
       }
     );
-    console.log(quiz);
-    if (!quiz) {
-      const err = new Error();
-      err.status = 404;
-      err.message = "No such quiz exists";
-      throw err;
+    if (!updateStatus) {
+        const err = new Error();
+        err.status = 404;
+        err.message = "No such quiz exists";
+        throw err;
     }
+    const quiz = await getQuizByid(quizid);
     return res.status(200).json({
       message: `stopped  the quiz ${quizid} from taking responses`,
       quiz: quiz,

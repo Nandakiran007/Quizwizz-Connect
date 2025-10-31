@@ -9,12 +9,13 @@
 .form-flex {
     background-color: var(--color-tertiary); 
     border-radius: var(--radius);
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 5px var(--border);
     padding: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     
 }
 
@@ -58,6 +59,7 @@ h1 {
 }
 
 .form-group {
+    /* margin-top: 40px; */
     margin-bottom: 20px;
 }
 

@@ -188,7 +188,6 @@ const CreateQuizPage = () => {
       name: quizName,
       description: quizDescription,
       questions,
-      user,
     };
 
     try {

@@ -40,54 +40,74 @@ const Results = () => {
     fetchResults();
   }, []);
   return (
-    <>
-      {oneStateVar.isLoading ? (
-        <p>loading....</p>
-      ) : (
-        <>
-          <Navbar />
-          <div className="result-root">
-            <div className="result-div">
-              <div className="result-heading">Results</div>
-              <div className="result-data">
-                <div className="about-quiz">
-                  {
-                    <div>
-                      <p>Quiz Name : {oneStateVar.quizResults.quizname}</p>
-                      <p>Quiz Creator : {oneStateVar.quizResults.creator}</p>
-                    </div>
-                  }
-                </div>
-                <div className="results-table">
-                  <table className="table">
-                    <thead className="table-head">
-                      <tr>
-                        <th>Username</th>
-                        <th>User ID</th>
-                        <th className="last-th">Score</th>
-                      </tr>
-                    </thead>
-                    <tbody className="table-body">
-                      {oneStateVar.quizResults &&
-                        oneStateVar.quizResults.results &&
-                        oneStateVar.quizResults.results.map((result, index) => (
-                          <tr key={index}>
-                            <td>{result.username}</td>
-                            <td>{result.userid}</td>
-                            <td>
-                              {result.scored_marks}/{result.total_marks}
-                            </td>
-                          </tr>
-                        ))}
-                    </tbody>
-                  </table>
-                </div>
+      <>
+          {oneStateVar.isLoading ? (
+              <div className="loading-screen">
+                  <p className="loading-text">Loading Results...</p>
               </div>
-            </div>
-          </div>
-        </>
-      )}
-    </>
+          ) : (
+              <>
+                  <Navbar />
+                  <section className="results-container">
+                      <div className="results-card">
+                          <header className="results-header">
+                              <h1 className="results-title">Quiz Results</h1>
+                              <div className="quiz-meta">
+                                  <p className="quiz-name">
+                                      <strong>Quiz Name:</strong>{" "}
+                                      {oneStateVar.quizResults.quizname}
+                                  </p>
+                                  <p className="quiz-creator">
+                                      <strong>Creator:</strong>{" "}
+                                      {oneStateVar.quizResults.creator}
+                                  </p>
+                              </div>
+                          </header>
+
+                          <div className="results-content">
+                              {(oneStateVar.quizResults?.results &&
+                              oneStateVar.quizResults.results.length > 0) ? (
+                              <div className="table-wrapper">
+                                  <table className="results-table">
+                                      <thead>
+                                          <tr>
+                                              <th>Username</th>
+                                              <th>User ID</th>
+                                              <th>Score</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          {oneStateVar.quizResults?.results?.map(
+                                              (result, index) => (
+                                                  <tr key={index}>
+                                                      <td>{result.username}</td>
+                                                      <td>{result.userid}</td>
+                                                      <td>
+                                                          {result.scored_marks}/
+                                                          {result.total_marks}
+                                                      </td>
+                                                  </tr>
+                                              )
+                                          )}
+                                      </tbody>
+                                  </table>
+                              </div>
+                              ): (
+                              <div className="empty-state">
+                                  <h2>No participants yet</h2>
+                                  <p>
+                                      It looks like nobody has attempted this
+                                      quiz yet. Once participants complete it,
+                                      their scores will appear here.
+                                  </p>
+                              </div>
+                              )}
+                          </div>
+                      </div>
+                  </section>
+              </>
+          )}
+      </>
   );
 };
 

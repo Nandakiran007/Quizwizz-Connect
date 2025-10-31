@@ -8,7 +8,6 @@ router.get("/",(req,res)=>{
     })
 })
 
-//TODO: create a middle to check authorization
 
 //create quiz
 router.post("/",createQuiz)
@@ -19,7 +18,7 @@ router.get("/created/:userid",getCreatedQuizzes)
 
 router.patch("/:quizid",editQuiz)
 
-router.post("/delete/:quizid",deleteQuiz)
+router.delete("/delete/:quizid",deleteQuiz)
 
 router.patch("/start/:quizid",startQuiz)
 router.patch("/end/:quizid",endQuiz)

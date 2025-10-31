@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    //TODO: created_quizzes and participated_quizzes these fields are no more required
     created_quizzes: [],
     participated_quizzes: [
         {

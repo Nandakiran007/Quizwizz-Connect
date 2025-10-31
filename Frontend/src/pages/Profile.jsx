@@ -27,7 +27,7 @@ const Profile = () => {
       try {
         console.log("in getuserdetails");
         console.log(`userid:${userid}`);
-        const response = await axiosInstance.get(`/auth/${userid}`);
+        const response = await axiosInstance.get("/auth/user");
         console.log("fetched", response.data);
         const details = response.data;
         const userinfo = {
@@ -39,7 +39,6 @@ const Profile = () => {
         };
         updateUserData(userinfo);
         setIsLoading(false);
-        // console.log(userinfo.participated_quizzes);
       } catch (err) {
         console.log(err);
       }

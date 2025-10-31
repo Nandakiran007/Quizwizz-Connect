@@ -17,25 +17,29 @@ const QuizzesJoined = () => {
   let notEmpty = list.length !== 0;
 
   return (
-    <>
-      {notEmpty ? (
-        <div className="cards d-flex">
-          {joined_quizzes.map((quiz, index) => (
-            <div className="participated-card" key={index}>
-              <h4 className="name-tag">{quiz.quizname}</h4>
-              <p>
-                <b>Creator:</b> {quiz.creatorname}{" "}
-              </p>
-              <p>
-                <b>Marks:</b> {quiz.scored_marks}/{quiz.total_marks}
-              </p>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p>{"You haven't joined any quizzes yet"}</p>
-      )}
-    </>
+      <>
+          {notEmpty ? (
+              <div className="cards d-flex">
+                  {joined_quizzes.map((quiz, index) => (
+                      <div className="card" key={index}>
+                          <h4 className="quiz-name-tag">{quiz.quizname}</h4>
+                          <p>
+                              <b>Quiz Id:</b> {quiz.quizid}{" "}
+                          </p>
+                          <p>
+                              <b>Creator:</b> {quiz.creatorname}{" "}
+                          </p>
+                          <p>
+                              <b>Marks:</b> {quiz.scored_marks}/
+                              {quiz.total_marks}
+                          </p>
+                      </div>
+                  ))}
+              </div>
+          ) : (
+              <p>{"You haven't joined any quizzes yet"}</p>
+          )}
+      </>
   );
 };
 

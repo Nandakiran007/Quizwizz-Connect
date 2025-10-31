@@ -41,5 +41,4 @@
 
 .nav-links li a:hover {
     font-weight: 700;
-    color: var(--color-accent); /* Coral on hover */
 }

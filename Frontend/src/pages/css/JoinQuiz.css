@@ -62,8 +62,8 @@
 }
 
 .option-selected {
-    background-color: var(--color-accent); /* orange for selected */
-    border-color: var(--color-accent);
+    background-color: var(--color-primary); /* orange for selected */
+    border-color: var(--color-primary);
     border-radius: 5px;
     color: var(--surface); /* white text */
     cursor: pointer;
@@ -93,11 +93,11 @@ h1 {
 
 .submit {
     background-color: var(--surface); /* white */
-    border: 2px solid var(--color-accent); /* orange border */
+    border: 2px solid var(--color-primary); /* orange border */
     height: 40px;
     margin: 20px;
     width: 120px;
-    color: var(--color-accent); /* orange text */
+    color: var(--color-primary); /* orange text */
     cursor: pointer;
     border-radius: 8px;
     font-family: var(--font-sans);
@@ -106,8 +106,8 @@ h1 {
 }
 
 .submit:hover {
-    background-color: var(--color-accent); /* orange fill */
-    font-size: 18px;
+    background-color: var(--color-primary); /* orange fill */
+    font-size: 16px;
     color: var(--surface); /* white text */
 }
 

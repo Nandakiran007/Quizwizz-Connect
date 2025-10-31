@@ -33,14 +33,14 @@ const LoginForm = () => {
 
       navigate("/");
     } catch (err) {
-      toast.error(err.response.data.message);
-      setWarnText(err.response.data.message);
+      console.log(err);
+      // toast.error(err.response.message);
+      // setWarnText(err.response.message);
     }
   };
 
   return (
     <div >
-      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="email">Email</label>

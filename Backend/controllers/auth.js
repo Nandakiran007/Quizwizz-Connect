@@ -79,6 +79,7 @@ async function handleLogin(req, res, next) {
             name: user.name,
         });
     } catch (error) {
+        err.message = "Internal Server Error";
         return next(error);
     }
 }
@@ -97,6 +98,7 @@ async function getUser(req, res, next) {
         }
         console.log("in get user");
     } catch (err) {
+        err.message = "Internal Server Error";
         return next(err);
     }
     return res.status(200).json(user);

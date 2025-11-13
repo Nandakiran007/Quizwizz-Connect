@@ -48,17 +48,8 @@ async function handleSignUp(req, res, next) {
             token: token,
         });
     } catch (err) {
-        console.log(`error while adding ${err}`);
-        const status = 500;
-        const message = `Error in Mongo DB while creation ${name}`;
-
-        const error = {
-            status,
-            message,
-        };
-        console.log(error);
-        console.log(error.status);
-        return next(error);
+        err.message = "Internal Server Error";
+        return next(err);
     }
 }
 

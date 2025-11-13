@@ -5,42 +5,56 @@ import SignupForm from "../components/SignupForm";
 import Navbar from "../components/Navbar";
 
 const Login = () => {
-  const [inlogin, setInlogin] = useState(true);
+    const [inlogin, setInlogin] = useState(true);
 
-  const handleToggleClick = () => {
-    setInlogin(!inlogin);
-  };
-  return (
-    <>
-    <Navbar/>
-    <div className="root-container">
-      <div className="form-flex">
-        <div className="button-box">
-          <div>
-            <button
-              className={`toggle-btn ${!inlogin && "specialBg"}`}
-              onClick={handleToggleClick}
-            >
-              Sign Up
-            </button>
-          </div>
-          <div>
-            <button
-              className={`toggle-btn ${inlogin && "specialBg"} `}
-              onClick={handleToggleClick}
-            >
-              Login
-            </button>
-          </div>
-        </div>
+    const handleToggleClick = () => {
+        setInlogin(!inlogin);
+    };
+    return (
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                height: "100%",
+                gap:'30px',
+            }}
+            className="outermost"
+        >
+            <Navbar />
+            <div className="root-container">
+                <div className="form-flex">
+                    <div className="button-box">
+                        <div>
+                            <button
+                                className={`toggle-btn ${
+                                    !inlogin && "specialBg"
+                                }`}
+                                onClick={handleToggleClick}
+                            >
+                                Sign Up
+                            </button>
+                        </div>
+                        <div>
+                            <button
+                                className={`toggle-btn ${
+                                    inlogin && "specialBg"
+                                } `}
+                                onClick={handleToggleClick}
+                            >
+                                Login
+                            </button>
+                        </div>
+                    </div>
 
-        <div>
-          {!inlogin && <SignupForm />}
-          {inlogin && <LoginForm />}
+                    <div>
+                        {!inlogin && <SignupForm />}
+                        {inlogin && <LoginForm />}
+                    </div>
+                </div>
+            </div>
+            <div/>
         </div>
-      </div>
-    </div>
-    </>
-  );
+    );
 };
 export default Login;

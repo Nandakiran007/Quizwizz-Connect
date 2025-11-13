@@ -140,7 +140,8 @@ async function deleteQuiz(req, res, next) {
       err.status = 401;
       throw err;
     }
-  } catch (err) {
+  } catch (err) {    
+    err.message = "Internal Server Error";
     return next(err);
   }
 }

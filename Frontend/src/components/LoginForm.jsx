@@ -34,8 +34,8 @@ const LoginForm = () => {
       navigate("/");
     } catch (err) {
       console.log(err);
-      // toast.error(err.response.message);
-      // setWarnText(err.response.message);
+      toast.error(err.response.data.message);
+      setWarnText(err.response.data.message);
     }
   };
 

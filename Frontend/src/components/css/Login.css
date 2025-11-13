@@ -1,13 +1,14 @@
+.outermost {
+    background-color: var(--color-secondary);
+}
 
-.root-container{
-    background-color: var(--bg); /* sand background */
-    height: 100vh;
+.root-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .form-flex {
-    background-color: var(--color-tertiary); 
+    background-color: var(--color-tertiary);
     border-radius: var(--radius);
     box-shadow: 2px 2px 5px var(--border);
     padding: 3rem;
@@ -16,7 +17,6 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    
 }
 
 .button-box {
@@ -26,8 +26,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--color-secondary);
-    gap: 5px; 
-    
+    gap: 5px;
 }
 
 .toggle-btn {
@@ -43,11 +42,9 @@
     outline: none;
     position: relative;
     font-weight: 500;
-     /* padding: 4px 8px; */
+    /* padding: 4px 8px; */
     /* margin-left: 20px; */
 }
-
-
 
 .headings {
     display: flex;
@@ -81,8 +78,6 @@ input[type="text"] {
     color: var(--text);
 }
 
-
-
 .social-login {
     margin-top: 20px;
 }
@@ -98,10 +93,6 @@ input[type="text"] {
 .social-login a:hover {
     color: var(--color-primary); /* teal on hover */
 }
-
-
-
-
 
 /* #btn {
     top: 0;
@@ -131,9 +122,8 @@ input[type="text"] {
 
 .specialBg {
     background: var(--color-primary);
-    color: var(--surface); 
+    color: var(--surface);
 }
-
 
 h1 {
     font-weight: bold;

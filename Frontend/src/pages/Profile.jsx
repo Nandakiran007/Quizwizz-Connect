@@ -51,8 +51,6 @@ const Profile = () => {
     <>
       <Navbar />
       <div className="main-box d-flex">
-        {/* <div className="side-navbar d-flex flex-column">
-    </div> */}
         <div className="sidebar">
           <div className="sidebar_options">
             <SidebarOption to="/profile" label="Profile" />

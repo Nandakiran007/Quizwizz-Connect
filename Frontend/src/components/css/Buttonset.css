@@ -1,5 +1,4 @@
 .outer-div-buttons {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +8,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 200px;
     gap: 48px;
 }
 
@@ -33,7 +31,7 @@
 
 .input-div {
     display: flex;
-    border: 2px solid var(--color-primary);   
+    border: 2px solid var(--color-primary);
     background-color: var(--surface);
     border-radius: var(--radius) 0 0 var(--radius);
     width: 175px;
@@ -47,39 +45,31 @@
     font-size: var(--base);
     color: var(--text); /* Main text color */
     outline: none;
-    border:none;
-    
+    border: none;
 }
 
 .input-div input[type="text"]:focus {
     outline: none;
-    border:none;
+    border: none;
 }
 
-
-
-
-
-
-
-.button-set-item{
+.button-set-item {
     /* background-color: green; */
-    height:64px; 
+    height: 64px;
 }
-.joinBtn{
+.joinBtn {
     width: 100px;
-    border-radius: 0 var(--radius)  var(--radius) 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
 }
 
 .navbarBg {
     background-color: var(--color-secondary); /* Sand background */
 }
 
-
 #warning-text {
     color: var(--color-error); /* Coral warning text */
     /* font-weight: 500; */
     /* font-size: large; */
     position: absolute;
-    margin-top:4px;
+    margin-top: 4px;
 }

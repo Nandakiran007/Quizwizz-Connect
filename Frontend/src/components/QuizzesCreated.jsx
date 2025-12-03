@@ -1,69 +1,55 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./css/QuizzesCreated.css";
-import axios from "axios";
-import { useAuth } from "../contexts/auth";
-import { BASE_URL } from "../constants";
+import axiosInstance from "../utils/axiosInstance";
+import { AuthContext } from "../contexts/Auth";
+import { toast } from "react-toastify";
 import CreatedQuizCard from "./CreatedQuizCard";
 const QuizzesCreated = () => {
-    const { getUserData } = useAuth();
-    let user = getUserData();
-    let userid = user.userid;
-    const [quizzes, setQuizzes] = useState([]);
-    const [quizfound, setQuizfound] = useState(true);
-    const [state, setState] = useState(true);
+    const {
+        user: { userid,created_quizzes },
+        updateUserData,
+    } = useContext(AuthContext);
 
-    useEffect(() => {
-        async function getQuizzes() {
-            try {
-                let response = await axios.get(
-                    `${BASE_URL}/quiz/created/${userid}`
-                );
-                setQuizzes(response.data.quizzes);
-                console.log(response.data);
-                console.log(response.data.quizzes);
-            } catch (err) {
-                console.log(err.response.data);
-                setQuizfound(false);
-            }
-        }
-        getQuizzes();
-    }, []);
     const deleteQuiz = async (quizid) => {
         console.log(" in delte");
         console.log(quizid);
-        console.log(user.userid);
-        const data = {
-            userid: user.userid,
-        };
+        console.log(userid);
         try {
-            let response = await axios.post(
-                `${BASE_URL}/quiz/delete/${quizid}`,
-                data
+            const response = await axiosInstance.delete(
+                `/quiz/delete/${quizid}`
             );
-            alert("Deleted Successfully");
-            console.log(response.data);
-            const newQuizList = quizzes.filter(
+            toast.success("Deleted Successfully");
+
+            const updatedCreatedQuizzesList = created_quizzes.filter(
                 (quiz) => quiz.quizid !== quizid
             );
-            setQuizzes(newQuizList);
+            updateUserData({ created_quizzes: updatedCreatedQuizzesList });
         } catch (err) {
-            console.log(err.response);
+            console.log(err);
+            toast.error(err.data.message);
         }
     };
 
-    let notEmpty = quizzes.length !== 0;
+    const updateQuiz = (Quiz) => {
+        const updatedCreatedQuizzesList = created_quizzes.map((quiz) =>
+            quiz.quizid === Quiz.quizid ? { ...quiz, ...Quiz } : quiz
+        );
+        updateUserData({ created_quizzes: updatedCreatedQuizzesList });
+    };
+
+    const notEmpty = created_quizzes.length !== 0;
 
     return (
-        <>
+        <div>
             {notEmpty ? (
                 <div className="cards d-flex">
-                    {quizzes.map((quiz) => (
+                    {created_quizzes.map((quiz) => (
                         <CreatedQuizCard
                             Quiz={quiz}
                             key={quiz.quizid}
-                            setState={setState}
                             deleteQuiz={deleteQuiz}
+                            updateQuiz={updateQuiz}
                         />
                     ))}
                 </div>
@@ -73,11 +59,9 @@ const QuizzesCreated = () => {
                 </div>
             )}
             <Link to="/create">
-                <button className="create-btn ">
-                    <p>Create Quiz</p>
-                </button>
+                <button className="create-btn">Create Quiz</button>
             </Link>
-        </>
+        </div>
     );
 };
 

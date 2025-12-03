@@ -1,118 +1,137 @@
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-
-    /* border: 1px solid black; */
+.results-container {
+  background-color: var(--bg);
+  min-height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
 }
 
-td {
-    justify-content: center;
-    /* border: 1px solid black */
+.results-card {
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--surface);
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(11, 61, 145, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.result-root {
-    padding: 30px;
-    height: 85vh;
-    overflow: hidden;
+.results-header {
+  background-color: var(--color-secondary);
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border);
 }
 
-.result-div {
-    /* margin: 40px; */
-    border-radius: 30px;
-    padding: 10px;
-    background-color: #f0f7ff;
-    height: 100%;
-    overflow-y: auto;
+.results-title {
+  font-size: var(--h1);
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-family: var(--font-sans);
 }
 
-.result-heading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100px;
-    font-size: 45px;
-    color: #0366d6;
-
+.quiz-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-sans);
+  color: var(--muted);
+  font-size: var(--base);
 }
 
-.result-data {
-    padding: 10px;
+.results-content {
+  padding: 24px 32px;
+  color: var(--text);
+  font-family: var(--font-sans);
 }
 
-.about-quiz {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 30%;
-    height: 100px;
-    margin: 10px 0px 20px 0px;
-    border-radius: 20px;
-    background-color: white;
-    padding: 15px 5px 15px 5px;
-}
-
-.about-quiz p {
-    margin: 0 10px 20px 10px;
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }
 
 .results-table {
-    width: 80%;
-    overflow-y: auto;
-    border-radius: 10px;
-    border: 3px solid #bddcff;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.table-head {
-    height: 80px;
+.results-table thead tr {
+  background-color: var(--color-secondary);
 }
 
-.table-body td {
-
-    height: 40px;
-    border: 1px solid black;
-    padding: 0.5rem;
+.results-table th {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: var(--h3);
+  padding: 14px;
+  text-align: left;
 }
 
-.table-head th,
-.table-body td {
-    padding: 10px;
-    /* background-color: white; */
-    border: 1px solid black;
-    text-align: left;
+.results-table td {
+  padding: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-size: var(--base);
 }
 
-.table-head th {
-    background-color: #cce5ff;
+.results-table tbody tr:hover {
+  background-color: var(--bg);
+  transition: background-color 0.2s ease-in-out;
 }
 
-.table-head tr:first-child th {
-    border-left: none;
+.score-cell {
+  text-align: right;
+  font-weight: 600;
+  color: var(--color-accent);
 }
 
-.last-th {
-    border-right: none;
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  background-color: var(--bg);
 }
 
-.table-head tr th {
-    border-top: none;
+.loading-text {
+  font-size: var(--h2);
+  color: var(--muted);
+  font-family: var(--font-sans);
 }
 
-.table tr:last-child td {
-    border-bottom: none;
-    /* Remove bottom border of last row */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.table tr td:first-child {
-    border-left: none;
+.empty-state h2 {
+  font-size: var(--h2);
+  color: var(--color-primary);
+  margin-top: 16px;
+  margin-bottom: 8px;
 }
 
-.table tr td:last-child {
-    border-right: none;
-    /* Remove right border of last cell in each row */
+.empty-state p {
+  max-width: 400px;
+  font-weight: 500;
+  font-size: var(--base);
+  line-height: 1.5;
 }
 
-.table-body tr:hover {
-    background-color: #e6f2ff;
+.empty-illustration {
+  width: 160px;
+  height: auto;
+  opacity: 0.85;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 2px 4px rgba(11, 61, 145, 0.15));
 }

@@ -1,8 +1,5 @@
 .bgHome {
-    background-image: url("./back_homepage.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* overflow:auto; */
+    background-color: var(--color-secondary);
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }

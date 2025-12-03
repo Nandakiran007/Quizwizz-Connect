@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useSearchParams, useParams } from "react-router-dom";
-import { useAuth } from "../contexts/auth";
-import axios from "axios";
+import { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { AuthContext } from "../contexts/Auth";
+import axiosInstance from "../utils/axiosInstance";
 import "./css/JoinQuiz.css";
 import OptionsList from "../components/OptionList";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../constants";
-
+import { toast } from "react-toastify";
 
 const JoinQuiz = () => {
     const { quizid } = useParams();
@@ -21,8 +20,7 @@ const JoinQuiz = () => {
         isLoading: true,
     });
     const [attempted_list, setAttemptedList] = useState({});
-    const { getUserData } = useAuth();
-    const user = getUserData();
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     //let [,setIsLoading]=useState(true)
@@ -40,12 +38,7 @@ const JoinQuiz = () => {
             console.log("in fetch quiz", quizid);
 
             try {
-                let response = await axios.post(
-                    `${BASE_URL}/exam/${quizid}`,
-                    {
-                        userid: user.userid,
-                    }
-                );
+                let response = await axiosInstance.get(`/exam/${quizid}`);
                 console.log("after response");
                 console.log(response);
                 setOneStateVar({
@@ -78,8 +71,8 @@ const JoinQuiz = () => {
         console.log("quiz submitted");
         console.log(attempted_list);
         try {
-            const response = await axios.post(
-                `${BASE_URL}/exam/submitExam/${quizid}`,
+            const response = await axiosInstance.post(
+                `/exam/submitExam/${quizid}`,
                 {
                     userid: user.userid,
                     username: user.name,
@@ -89,24 +82,22 @@ const JoinQuiz = () => {
             console.log(response.data);
             navigate("/profile/joined-quizzes");
         } catch (err) {
-            console.log(err.response);
-            alert("error while submitting");
+            console.log(err);
+            toast.error("error while submitting");
         }
     };
 
     return (
         <>
+            <Navbar />
             {oneStateVar.isLoading ? (
                 <div> Loading... </div>
             ) : oneStateVar.isErr ? (
                 <>
-                    <Navbar />
                     <p className="error-text">{oneStateVar.errorText}</p>
                 </>
             ) : (
                 <>
-                    {/* <Helmet><title>QuizPage</title></Helmet> */}
-                    <Navbar />
                     <div className="quiz-title">
                         <h1>{oneStateVar.quizData.name}</h1>
                         <h4>{oneStateVar.quizData.description}</h4>

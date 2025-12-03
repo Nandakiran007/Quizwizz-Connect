@@ -1,0 +1,40 @@
+:root {
+  /* Colors */
+  --color-primary: #0B3D91; /* 60% — deep indigo (focus, trust) */
+  --color-secondary: #EAF4FF;
+  --color-tertiary: #cfd1d5ff; /* 30% — light airy blue for cards / secondary surfaces */
+  --color-accent: #FF6A00; /* 10% — energetic orange for CTAs / highlights */
+  --color-error: rgb(255, 76, 76);
+  --bg: #F7FBFF; /* page background */
+  --surface: #FFFFFF; /* white cards / surfaces */
+  --border: #D9E8FF; /* subtle border */
+  --text: #0B2136; /* main body text (high contrast) */
+  --muted: #6B7280; /* muted text / secondary copy */
+
+  /* Layout / Typography */
+  --radius: 12px;
+  --gap: 12px;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --base: 16px;
+  --h1: 32px;
+  --h2: 24px;
+  --h3: 20px;
+  --h4: 18px;
+  --line-height: 1.45;
+}
+
+/* ========== TYPOGRAPHY & GLOBAL RESET ========== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+html,body,#root{
+  height: 100%;
+}
+
+p{
+  font-weight: 500;
+}

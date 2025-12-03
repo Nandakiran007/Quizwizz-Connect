@@ -1,31 +1,29 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useAuth } from "../contexts/auth";
+import axiosInstance from "../utils/axiosInstance";
+import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../constants";
-const CreatedQuizCard = ({ Quiz, setState, deleteQuiz }) => {
-    const { user } = useAuth();
-    const [quiz, setQuiz] = useState(Quiz);
+import { toast } from "react-toastify";
+const CreatedQuizCard = ({ Quiz, deleteQuiz, updateQuiz }) => {
     const navigate = useNavigate();
-    const [refresh,setRefresh]=useState(false);
     const startQuiz = async (quizid) => {
         try {
-            let response = await axios.patch(
-                `${BASE_URL}/quiz/start/${quizid}`
-            );
-            alert(response.data.message);
-            setRefresh(!refresh);
+            const response = await axiosInstance.patch(`/quiz/start/${quizid}`);
+            console.log("res", response);
+            toast.success(response.data.message);
+            updateQuiz(response.data.quiz);
         } catch (err) {
-            console.log(err.response.data.message);
+            console.log(err.data);
         }
     };
     const endQuiz = async (quizid) => {
         try {
-            let response = await axios.patch(`${BASE_URL}/quiz/end/${quizid}`);
-            alert(response.data.message);
-            setRefresh(!refresh);
+            const response = await axiosInstance.patch(`/quiz/end/${quizid}`);
+            console.log("res", response);
+            toast.success(response.data.message);
+            updateQuiz(response.data.quiz);
         } catch (err) {
-            console.log(err.response.data.message);
+            console.log(err);
+            console.log(err.data.message);
         }
     };
     const viewResults = async (quizid) => {
@@ -33,62 +31,56 @@ const CreatedQuizCard = ({ Quiz, setState, deleteQuiz }) => {
     };
 
     return (
-        <>
-            <div className="card ">
-                <br />
-                <h4 className="quiz-name-tag">{Quiz.name}</h4>
-                <p>
-                    <b>Quiz ID: </b>
-                    {Quiz.quizid}
-                </p>
-                <p>
-                    <b>No of Participants:</b>
-                    {Quiz.participants.length}
-                </p>
-                <p>
-                    <b>No of Questions: </b>
-                    {Quiz.questions_list.length}
-                </p>
+        <div className="card">
+            <h4 className="quiz-name-tag">{Quiz.name}</h4>
+            <p>
+                <b>Quiz ID: </b>
+                {Quiz.quizid}
+            </p>
+            <p>
+                <b>No of Participants:</b>
+                {Quiz.participantsCount}
+            </p>
+            <p>
+                <b>No of Questions: </b>
+                {Quiz.questionsCount}
+            </p>
 
-                {Quiz.isEnded ? (
-                    <>
-                        <button
-                            className="class_b"
-                            onClick={() => viewResults(Quiz.quizid)}
-                        >
-                            View Results{" "}
-                        </button>
-                        <button
-                            className="class_b"
-                            onClick={() => startQuiz(Quiz.quizid)}
-                        >
-                            {" "}
-                            Continue Responses
-                        </button>
-                    </>
-                ) : !Quiz.isStarted ? (
+            {Quiz.isEnded ? (
+                <>
                     <button
-                        className="for_margin class_b"
+                        className="class_b"
+                        onClick={() => viewResults(Quiz.quizid)}
+                    >
+                        View Results{" "}
+                    </button>
+                    <button
+                        className="class_b"
                         onClick={() => startQuiz(Quiz.quizid)}
                     >
-                        Start Quiz
+                        {" "}
+                        Continue Responses
                     </button>
-                ) : (
-                    <button
-                        className="for_margin class_b"
-                        onClick={() => endQuiz(Quiz.quizid)}
-                    >
-                        Stop Quiz
-                    </button>
-                )}
+                </>
+            ) : !Quiz.isStarted ? (
                 <button
-                    className="class_b"
-                    onClick={() => deleteQuiz(Quiz.quizid)}
+                    className="for_margin class_b"
+                    onClick={() => startQuiz(Quiz.quizid)}
                 >
-                    Delete Quiz
+                    Start Quiz
                 </button>
-            </div>
-        </>
+            ) : (
+                <button
+                    className="for_margin class_b"
+                    onClick={() => endQuiz(Quiz.quizid)}
+                >
+                    Stop Quiz
+                </button>
+            )}
+            <button className="class_b" onClick={() => deleteQuiz(Quiz.quizid)}>
+                Delete Quiz
+            </button>
+        </div>
     );
 };
 

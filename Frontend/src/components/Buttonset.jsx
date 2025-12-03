@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../contexts/Auth";
 import { Link } from "react-router-dom";
 import "./css/Buttonset.css";
-import { useAuth } from "../contexts/auth";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 const Buttonset = () => {
     const navigate = useNavigate();
     const [QuizId, setQuizId] = useState("");
     const [warningText, setWarningText] = useState("");
-    const { isLoggedin, getUserData } = useAuth();
-    const user = getUserData();
+    const { isLoggedin } = useContext(AuthContext);
 
     const handleInputChange = (e) => {
         console.log(e.target.value);
@@ -17,7 +15,7 @@ const Buttonset = () => {
         setQuizId(e.target.value);
     };
 
-    const handleJoin = async (e) => {
+    const handleJoin = async () => {
         if (!isLoggedin) {
             navigate("/login");
         }
@@ -26,26 +24,27 @@ const Buttonset = () => {
         if (isEmpty) {
             setWarningText("Please enter the Quiz ID");
         } else {
-            let isValidQuizid = true; //TODO: write isvalid function
+            let isValidQuizid = QuizId.length > 3; //TODO: write isvalid function
             isValidQuizid
                 ? navigate(`/join/${QuizId}`)
-                : setWarningText(err.response.data.message);
+                : setWarningText(
+                      "Quiz ID should be at least 4 characters long"
+                  );
         }
     };
 
     return (
         <div className="outer-div-buttons">
-            <div className="buttons">
-                <div className="item item1 mx-4">
-                    <Link to="/create">
-                        <button className="Home_button">
-                            <p className="white_p">Create Quiz</p>
+            <div className="home-buttons">
+                <div>
+                    <Link to="/create" style={{ textDecoration: "none" }}>
+                        <button className="Home_button button-set-item">
+                            <p className="cta-color ">Create Quiz</p>
                         </button>
                     </Link>
                 </div>
-
-                <div className="item item2 mx-4">
-                    <div className="right-box">
+                <div>
+                    <div className="d-flex">
                         <div className="input-div">
                             <input
                                 type="text"
@@ -54,16 +53,15 @@ const Buttonset = () => {
                                 maxLength={5}
                                 className="navbarBg"
                             />
-
-                            <button
-                                onClick={handleJoin}
-                                className="Home_button"
-                            >
-                                <p className="white_p">Join</p>
-                            </button>
                         </div>
-                        <p id="warning-text">{warningText}</p>
+                        <button
+                            onClick={handleJoin}
+                            className="Home_button button-set-item joinBtn"
+                        >
+                            <p className="cta-color ">Join</p>
+                        </button>
                     </div>
+                    <p id="warning-text">{warningText}</p>
                 </div>
             </div>
         </div>

@@ -1,15 +1,20 @@
-import React from "react";
 import Navbar from "../components/Navbar";
 import Buttonset from "../components/Buttonset";
 import "./css/Home.css";
 function Home() {
     return (
-        <>
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                height: "100%",
+            }}
+        >
             <Navbar />
-            <div className="bgHome">
-                <Buttonset />
-            </div>
-        </>
+            <Buttonset  />
+            <div />
+        </div>
     );
 }
 
